@@ -1,7 +1,6 @@
 </main> <footer class="footer mt-auto py-4 bg-light border-top">
     <div class="container text-center">
-        <p class="mb-0 text-muted">&copy; 2025 Kelompok 8 Tubes PBO - <strong>eReadly</strong></p>
-        <small>Penerapan OOP: Abstraction, Inheritance, Polymorphism, & Encapsulation</small>
+        <p class="mb-0 text-muted">&copy; 2025  - <strong>eReadly</strong></p>
     </div>
 </footer>
 
