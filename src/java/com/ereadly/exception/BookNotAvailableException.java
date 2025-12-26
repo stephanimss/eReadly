@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.ereadly.exception;
 
-/**
- *
- * @author Luluil Maknun
- */
-public class BookNotAvailableException {
-    
+public class BookNotAvailableException extends Exception {
+
+    public BookNotAvailableException() {
+        super("Buku tidak tersedia untuk dipinjam");
+    }
+
+    public BookNotAvailableException(String message) {
+        super(message);
+    }
 }
