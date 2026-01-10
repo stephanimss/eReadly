@@ -3,7 +3,7 @@ package com.ereadly.exception;
 public class BookNotAvailableException extends Exception {
 
     public BookNotAvailableException() {
-        super("Buku tidak tersedia untuk dipinjam");
+        super("Stok buku tidak tersedia");
     }
 
     public BookNotAvailableException(String message) {

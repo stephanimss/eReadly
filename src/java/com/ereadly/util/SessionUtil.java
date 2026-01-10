@@ -1,28 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.ereadly.util;
 
-/**
- *
- * @author Luluil Maknun
- */
-
-import jakarta.servlet.http.HttpSession;
+import com.ereadly.model.User;
+import javax.servlet.http.HttpSession;
 
 public class SessionUtil {
 
+    private SessionUtil() {}
+
+    public static User getUser(HttpSession session) {
+        if (session == null) return null;
+        return (User) session.getAttribute("user");
+    }
+
     public static boolean isLoggedIn(HttpSession session) {
-        return session != null && session.getAttribute("user") != null;
+        return getUser(session) != null;
     }
 
     public static boolean isAdmin(HttpSession session) {
-        return isLoggedIn(session) && "ADMIN".equals(session.getAttribute("role"));
+        User user = getUser(session);
+        return user != null && user.isAdmin();
     }
 
-    public static boolean isMember(HttpSession session) {
-        return isLoggedIn(session) && "MEMBER".equals(session.getAttribute("role"));
+    public static void invalidate(HttpSession session) {
+        if (session != null) {
+            session.invalidate();
+        }
     }
 }
-

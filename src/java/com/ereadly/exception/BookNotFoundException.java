@@ -1,21 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.ereadly.exception;
 
-/**
- *
- * @author Bening Pastika
- */
 public class BookNotFoundException extends Exception {
 
     public BookNotFoundException() {
-        super("Book not found");
+        super("Buku tidak ditemukan");
     }
 
     public BookNotFoundException(String message) {
         super(message);
     }
 }
-

@@ -1,13 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.ereadly.util;
 
-/**
- *
- * @author Luluil Maknun
- */
 public class ValidationUtil {
-    
+
+    private ValidationUtil() {}
+
+    public static boolean isValidEmail(String email) {
+        if (email == null) return false;
+        return email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
+    }
+
+    public static String detectRoleByEmail(String email) {
+        if (email == null) return "member";
+
+        if (email.endsWith("@admin.com")) {
+            return "admin";
+        }
+        return "member";
+    }
 }

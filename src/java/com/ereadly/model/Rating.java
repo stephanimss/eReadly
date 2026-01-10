@@ -1,55 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.ereadly.model;
 
 public class Rating {
 
-    private int ratingId;
-    private int loanId;
-    private int skor; // 1 - 5
-    private String ulasan;
+    private int id;
+    private int userId;
+    private int bookId;
+    private int score; 
+    private String comment;
+    
+    private String userName;  
+    private String createdAt; 
 
-    public Rating() {
-    }
+    public Rating() {}
 
-    public Rating(int loanId, int skor, String ulasan) {
-        this.loanId = loanId;
-        this.skor = skor;
-        this.ulasan = ulasan;
-    }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public int getRatingId() {
-        return ratingId;
-    }
+    public int getUserId() { return userId; }
+    public void setUserId(int userId) { this.userId = userId; }
 
-    public void setRatingId(int ratingId) {
-        this.ratingId = ratingId;
-    }
+    public int getBookId() { return bookId; }
+    public void setBookId(int bookId) { this.bookId = bookId; }
 
-    public int getLoanId() {
-        return loanId;
-    }
+    public int getScore() { return score; }
+    public void setScore(int score) { this.score = score; }
 
-    public void setLoanId(int loanId) {
-        this.loanId = loanId;
-    }
+    public String getComment() { return comment; }
+    public void setComment(String comment) { this.comment = comment; }
 
-    public int getSkor() {
-        return skor;
-    }
+    public String getUserName() { return userName; }
+    public void setUserName(String userName) { this.userName = userName; }
 
-    public void setSkor(int skor) {
-        this.skor = skor;
-    }
-
-    public String getUlasan() {
-        return ulasan;
-    }
-
-    public void setUlasan(String ulasan) {
-        this.ulasan = ulasan;
-    }
+    public String getCreatedAt() { return createdAt; }
+    public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
 }
-

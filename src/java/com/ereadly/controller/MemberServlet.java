@@ -1,46 +1,26 @@
 package com.ereadly.controller;
 
-import com.ereadly.dao.BookDAO;
-import com.ereadly.dao.LoanDAO;
-import com.ereadly.model.Book;
-import com.ereadly.model.Loan;
 import com.ereadly.model.User;
+import com.ereadly.util.SessionUtil;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
-@WebServlet({"/catalog", "/my-loans"})
+@WebServlet("/member")
 public class MemberServlet extends HttpServlet {
-
+    // Menangani akses awal jalur /member, melakukan validasi otoritas role, dan mengalihkan pengguna ke halaman katalog utama
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
             throws ServletException, IOException {
         
-        String path = request.getServletPath();
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
+        User user = SessionUtil.getUser(req.getSession(false));
 
-        if (user == null) {
-            response.sendRedirect(request.getContextPath() + "/views/auth/login.jsp");
+        if (user == null || !user.isMember()) {
+            resp.sendRedirect(req.getContextPath() + "/login");
             return;
         }
 
-        if (path.equals("/catalog")) {
-            BookDAO bookDAO = new BookDAO();
-            List<Book> books = bookDAO.getAllBooks();
-            request.setAttribute("books", books);
-            request.getRequestDispatcher("/views/member/catalog.jsp").forward(request, response);
-            
-        } else if (path.equals("/my-loans")) {
-            LoanDAO loanDAO = new LoanDAO();
-            List<Loan> userLoans = loanDAO.getLoansByUserId(user.getId());
-            request.setAttribute("loans", userLoans);
-            request.getRequestDispatcher("/WEB-INF/views/member/my-loans.jsp").forward(request, response);
-        }
+        resp.sendRedirect(req.getContextPath() + "/catalog");
     }
 }

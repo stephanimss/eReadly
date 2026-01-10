@@ -1,26 +1,24 @@
-package com.ereadly.config;
+package com.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DatabaseConfig {
-
-    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/db_ereadly";
+    private static final String URL = "jdbc:mysql://localhost:3306/db_ereadly?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
     private static final String USER = "root";
-    private static final String PASSWORD = " "; //sesuaikan pass dan namausernya
+    private static final String PASS = "";
 
     static {
         try {
-            Class.forName(DRIVER);
-        } catch (Exception e) {
-            System.err.println("X Gagal load JDBC Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.err.println("DatabaseConfig Error: Driver MySQL tidak ditemukan!");
             e.printStackTrace();
         }
     }
 
-    public static Connection getConnection() throws Exception {
-        System.out.println(" Mencoba koneksi ke database...");
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASS);
     }
 }

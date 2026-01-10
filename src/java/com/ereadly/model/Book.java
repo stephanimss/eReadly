@@ -1,92 +1,42 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.ereadly.model;
 
-/**
- *
- * @author Bening Pastika
- */
 public class Book {
-    private int bookId;
+    private int id;
     private String title;
     private String author;
-    private String publisher;
-    private int year;
-    private String genre;
-    private double rating;
-    private boolean available;
+    private String category;
+    private int stock;
+    private double averageRating; 
 
-     public Book(int bookId, String title, String author, String publisher, int year, String genre, double rating, boolean available) {
-        this.bookId = bookId;
+    public Book() {}
+
+    public Book(int id, String title, String author, String category, int stock) {
+        this.id = id;
         this.title = title;
         this.author = author;
-        this.publisher = publisher;
-        this.year = year;
-        this.genre = genre;
-        this.rating = rating;
-        this.available = available;
-    }
-    public int getBookId() {
-        return bookId;
-    }
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
+        this.category = category;
+        this.stock = stock;
     }
 
-    public String getTitle() {
-        return title;
-    }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public String getAuthor() {
-        return author;
-    }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
+    public String getAuthor() { return author; }
+    public void setAuthor(String author) { this.author = author; }
 
-    public String getPublisher() {
-        return publisher;
-    }
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
+    public int getStock() { return stock; }
+    public void setStock(int stock) { this.stock = stock; }
 
-    public int getYear() {
-        return year;
-    }
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public double getRating() {
-        return rating;
-    }
+    public double getAverageRating() { return averageRating; }
+    public void setAverageRating(double averageRating) { this.averageRating = averageRating; }
 
     public boolean isAvailable() {
-        return available;
-    }
-     public void setAvailable(boolean available) {
-        this.available = available;
-    }
-     public void updateRating(double newRating) {
-        if (newRating < 0 || newRating > 5) {
-            throw new IllegalArgumentException("Rating harus 0–5");
-        }
-        this.rating = newRating;
+        return stock > 0;
     }
 }
